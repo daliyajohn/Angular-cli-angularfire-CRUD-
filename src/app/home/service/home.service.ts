@@ -2,21 +2,23 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
-  private customerApiUrl = 'customers';
-  constructor(private http: HttpClient) { }
   listUrl: string = 'http://dummy.restapiexample.com/api/v1/employees';
   deleteUrl = 'http://dummy.restapiexample.com/api/v1/delete/';
   createUserUrl = 'http://dummy.restapiexample.com/api/v1/create';
   updateUserUrl = 'http://dummy.restapiexample.com/api/v1/update/';
 
+  constructor(private http: HttpClient, private db: AngularFireDatabase) { }
+
+
   // get user details
   getUsersData() {
-    return this.http.get(this.listUrl);
+    return  this.db.list('/employeelist').snapshotChanges();
   }
 
   // delete user

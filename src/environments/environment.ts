@@ -9,7 +9,7 @@ export const environment = {
     authDomain: "weightloss-7d595.firebaseapp.com",
     databaseURL: "https://weightloss-7d595.firebaseio.com",
     projectId: "weightloss-7d595",
-    storageBucket: "",
+    storageBucket: "weightloss-7d595.appspot.com",
     messagingSenderId: "387818931330",
     appId: "1:387818931330:web:46e3d034b0b7d49968609b",
     measurementId: "G-MCR0E3M55M"

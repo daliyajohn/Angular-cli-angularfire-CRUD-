@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { HomeService } from '../service/home.service';
 import { $ } from 'protractor';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -16,19 +18,33 @@ export class UserListComponent implements OnInit {
   users:any;
   showLoader: boolean;
 
-  constructor( private router: Router, private homeService: HomeService) { }
+
+
+
+  // items$: Observable<any[]>;
+  constructor( private router: Router, private homeService: HomeService) {
+    
+    // console.log('get list',  this.items$ );
+     this.listUserData();
+   }
 
   ngOnInit() {
     this.showLoader = true;
-    this.listUserData();
+    this.homeService.getUsersData().subscribe( data=>{
+      this.usersData = data;
+      this.showLoader = false;
+      console.log('get my data db', this.usersData)
+
+    });
   }
 
   // user data list
   listUserData() {
-    this.homeService.getUsersData().subscribe( data => {
-      this.showLoader = false;
-      this.usersData = data;
-    });
+    // this.homeService.getUsersData().subscribe( data => {
+    //   this.showLoader = false;
+    //   this.usersData = data;
+    // });
+   
   }
 
   editUserData(UserId) {
