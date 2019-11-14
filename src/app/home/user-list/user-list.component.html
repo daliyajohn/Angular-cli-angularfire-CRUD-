@@ -1,0 +1,53 @@
+
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Scrore</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of usersData">
+        <th scope="row"></th>
+        <td>{{item.employee_name}}</td>
+        <td>{{item.employee_salary}}</td>
+        <td>{{item.employee_age}}</td>
+        <td>
+          <button  type="button" class="btn btn-success mr-2" id="close-popup"  data-toggle="modal" data-target="#userModal" (click)="editUserData(item)">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="deleteData(item)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- loader start -->
+  <ng-container *ngIf="showLoader">
+    <div class="d-flex align-items-center justify-content-center mt-5">
+      <div class="loader"></div>
+    </div>
+  </ng-container>
+  <!-- loader end -->
+</div>
+
+<div id="snackbar" class="btn-success"></div>
+
+<!-- user add form modal start -->
+  <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true" *ngIf="editUser">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)= "closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-edit-form [userEditData]="userDetails" (cancelForm)="closeModal($event)"></app-edit-form>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- user add form modal end -->

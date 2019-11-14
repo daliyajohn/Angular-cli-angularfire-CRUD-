@@ -1,0 +1,20 @@
+<form [formGroup]="userEditForm" (ngSubmit)="updateUser(userEditForm.value)">
+  <p class="font-weight-bold">Edit user</p>
+  <div class="form-group">
+    <label for="name">Employee Name</label>
+    <input type="text" class="form-control" id="name" formControlName="employee_name" placeholder="Employee Name">
+  </div>
+
+  <div class="form-group">
+    <label for="salary">Employee Salary</label>
+    <input type="text" class="form-control" id="salary" formControlName="employee_salary" placeholder="Employee Salary">
+  </div>
+
+  <div class="form-group">
+    <label for="age">Employee Age</label>
+    <input type="text" class="form-control" id="age" formControlName="employee_age" placeholder="Employee Age">
+  </div>
+
+  <button type="submit" class="btn btn-primary float-right" >Update</button>
+  <button class="btn btn-secondary float-right mr-2" type="reset" (click)="onReset()" data-dismiss="modal">Cancel</button>
+</form>

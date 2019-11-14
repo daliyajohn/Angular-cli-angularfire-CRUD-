@@ -1,0 +1,11 @@
+form {
+    p {
+        font-size: 18px;
+    }
+    label, input {
+        font-size: 12px;
+    }
+    ::placeholder {
+        font-size: 12px;
+    }
+}
