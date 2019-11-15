@@ -30,12 +30,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.showLoader = true;
-    this.homeService.getUsersData().subscribe( data=>{
-      this.usersData = data;
-      this.showLoader = false;
-      console.log('get my data db', this.usersData)
-
-    });
+    this.homeService.getUsersData();
   }
 
   // user data list

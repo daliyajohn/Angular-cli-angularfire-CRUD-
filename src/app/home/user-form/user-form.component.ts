@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomeService } from '../service/home.service';
 import { first } from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
@@ -20,8 +21,9 @@ export class UserFormComponent implements OnInit {
   ngOnInit() { 
     this.userForm = this.formBuilder.group({
       name: ['', Validators.required],
-      salary: ['', Validators.required],
-      age: ['', Validators.required]
+      score: ['', Validators.required],
+      date: ['', Validators.required],
+      weight: ['', Validators.required]
     });
   }
 
@@ -29,19 +31,12 @@ export class UserFormComponent implements OnInit {
   onSubmit(userData) {
     this.submitted = true;
     if (this.userForm.valid) {
-      this.homeService.createUser(userData).subscribe(data => {
-        this.cancelForm.emit(false);
-        if(data.status === 200) {
-          var x = document.getElementById("snackbar");
-          x.innerHTML = 'Add user successfully!'
-          x.className = "show";
-          setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-        }
-      },
-      error => {
-        alert(error);
-      });
-    }
+
+      console.log('add data', userData);
+    
+      this.homeService.createUser(userData);
+      
+      }
   }
 
   onReset() {

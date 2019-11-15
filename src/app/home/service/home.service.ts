@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,13 @@ export class HomeService {
   updateUserUrl = 'http://dummy.restapiexample.com/api/v1/update/';
 
   constructor(private http: HttpClient, private db: AngularFireDatabase) { }
-
+  employeeList: AngularFireList<any>;
 
   // get user details
   getUsersData() {
-    return  this.db.list('/employeelist').snapshotChanges();
+    // return  this.db.list('/employeelist').snapshotChanges();
+    this.employeeList = this.db.list('/employeelist');
+    return this.employeeList;
   }
 
   // delete user
@@ -30,8 +33,17 @@ export class HomeService {
   }
 
   // create user
-  createUser(user): Observable<any> {
-    return this.http.post(this.createUserUrl, user);
+  createUser(user) {
+    console.log('service add data', user);
+    
+    // return this.http.post(this.createUserUrl, user);
+
+    this.employeeList.push({
+      name: user.name,
+      scope: user.score,
+      weight: user.weight,
+      date: user.date
+    });
   }
 
   // update user

@@ -1,18 +1,23 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
   <p class="font-weight-bold">Add user</p>
   <div class="form-group">
-    <label for="name">Employee Name</label>
-    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Employee Name">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
   </div>
 
   <div class="form-group">
-    <label for="salary">Employee Salary</label>
-    <input type="text" class="form-control" id="salary" formControlName="salary" placeholder="Employee Salary">
+    <label for="score">Score</label>
+    <input type="text" class="form-control" id="score" formControlName="score" placeholder="Score">
   </div>
 
   <div class="form-group">
-    <label for="age">Employee Age</label>
-    <input type="text" class="form-control" id="age" formControlName="age" placeholder="Employee Age">
+    <label for="weight">Weight</label>
+    <input type="text" class="form-control" id="weight" formControlName="weight" placeholder="Weight">
+  </div>
+
+  <div class="form-group">
+    <label for="date">Date</label>
+    <input type="text" class="form-control" id="date" formControlName="date" placeholder="Date">
   </div>
 
   <button type="submit" class="btn btn-primary float-right">Add</button>
