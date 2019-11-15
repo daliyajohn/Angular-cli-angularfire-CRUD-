@@ -13,6 +13,8 @@ export class UserFormComponent implements OnInit {
   @Input() userEditData;
   userForm: FormGroup;
   submitted = false;
+  employeeName: any = [];
+  
   @Output() cancelForm: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private formBuilder: FormBuilder, private homeService: HomeService) { 
@@ -23,8 +25,29 @@ export class UserFormComponent implements OnInit {
       name: ['', Validators.required],
       score: ['', Validators.required],
       date: ['', Validators.required],
-      weight: ['', Validators.required]
+      weight: ['']
     });
+
+    this.employeeName = [
+        {'name': 'Anand'},
+        {'name': 'Daliya'},
+        {'name': 'Deepu'},
+        {'name': 'Erild'},
+        {'name': 'Jaseena'},
+        {'name': 'Nithin'},
+        {'name': 'Thaha'},
+        {'name': 'Vishnu'},
+        {'name': 'Adarsh'},
+        {'name': 'Lavanya'},
+        {'name': 'Sumil'},
+        {'name': 'Rahul'},
+        {'name': 'Arun'},
+        {'name': 'Kala'},
+        {'name': 'Midhun'},
+        {'name': 'Samreen'},
+        {'name': 'Nithya'}
+    ]
+    console.log('emp name', this.employeeName);
   }
 
   // submit data
@@ -35,7 +58,7 @@ export class UserFormComponent implements OnInit {
       console.log('add data', userData);
     
       this.homeService.createUser(userData);
-      
+      this.cancelForm.emit(false);
       }
   }
 

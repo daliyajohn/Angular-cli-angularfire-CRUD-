@@ -12,19 +12,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  usersData: any;
   userDetails: any;
   editUser: boolean;
-  users:any;
   showLoader: boolean;
 
+  employeeList = [];
+  empData:any;
 
-
-
-  // items$: Observable<any[]>;
   constructor( private router: Router, private homeService: HomeService) {
-    
-    // console.log('get list',  this.items$ );
      this.listUserData();
    }
 
@@ -35,29 +30,21 @@ export class UserListComponent implements OnInit {
 
   // user data list
   listUserData() {
-    // this.homeService.getUsersData().subscribe( data => {
-    //   this.showLoader = false;
-    //   this.usersData = data;
-    // });
-   
+    var x = this.homeService.getUsersData();
+    x.snapshotChanges().subscribe(item => {
+      this.showLoader = false;
+      this.employeeList = [];
+      item.forEach(element => {
+        this.empData = element.payload.toJSON();
+        // this.empData["$key"] = element.key;
+        this.employeeList.push(this.empData);
+      });
+    });
   }
 
   editUserData(UserId) {
     this.userDetails = UserId;
     this.editUser = true;
-  }
-
-  // delete user data
-  deleteData(data) {
-    this.homeService.deleteUserData(data.id)
-    .subscribe( data => {
-      this.users = data;
-      this.listUserData();
-      var x = document.getElementById("snackbar");
-      x.innerHTML = 'successfully! deleted Records'
-      x.className = "show";
-      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-    })
   }
 
   closeModal() {

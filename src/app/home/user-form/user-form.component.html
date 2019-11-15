@@ -2,7 +2,14 @@
   <p class="font-weight-bold">Add user</p>
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
+    <!-- <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name"> -->
+    <select class="custom-select" id="name" formControlName="name">
+      <option selected>Choose...</option>
+      <ng-container *ngFor="let employee of employeeName" >
+        <option>{{employee.name}}</option>
+      </ng-container>
+
+    </select>
   </div>
 
   <div class="form-group">
@@ -17,7 +24,7 @@
 
   <div class="form-group">
     <label for="date">Date</label>
-    <input type="text" class="form-control" id="date" formControlName="date" placeholder="Date">
+    <input type="date" class="form-control" id="date" formControlName="date" placeholder="Date">
   </div>
 
   <button type="submit" class="btn btn-primary float-right">Add</button>

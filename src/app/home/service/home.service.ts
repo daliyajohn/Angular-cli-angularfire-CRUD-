@@ -19,28 +19,15 @@ export class HomeService {
 
   // get user details
   getUsersData() {
-    // return  this.db.list('/employeelist').snapshotChanges();
     this.employeeList = this.db.list('/employeelist');
     return this.employeeList;
   }
 
-  // delete user
-  deleteUserData(id): Observable<any> {
-    const url = `${this.deleteUrl}${id}`;
-    return this.http.delete(url).pipe(map(response => {
-      return response;
-    }))
-  }
-
   // create user
   createUser(user) {
-    console.log('service add data', user);
-    
-    // return this.http.post(this.createUserUrl, user);
-
     this.employeeList.push({
       name: user.name,
-      scope: user.score,
+      score: user.score,
       weight: user.weight,
       date: user.date
     });

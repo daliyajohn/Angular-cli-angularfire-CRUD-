@@ -1,45 +1,39 @@
-<!-- 
+
+<h2 class="my-4">FAYA FAT 2 FIT 2.0</h2>
 <div class="table-container">
   <table class="table">
     <thead>
       <tr>
         <th scope="col"></th>
         <th scope="col">Name</th>
-        <th scope="col">Scrore</th>
+        <th scope="col">Date</th>
+        <th scope="col">Score</th>
         <th scope="col">Weight</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of usersData">
+      <tr *ngFor="let item of employeeList">
         <th scope="row"></th>
-        <td>{{item.employee_name}}</td>
-        <td>{{item.employee_salary}}</td>
-        <td>{{item.employee_age}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.date}}</td>
+        <td>{{item.score}}</td>
+        <td>{{item.weight}}</td>
         <td>
           <button  type="button" class="btn btn-success mr-2" id="close-popup"  data-toggle="modal" data-target="#userModal" (click)="editUserData(item)">Edit</button>
-          <button type="button" class="btn btn-danger" (click)="deleteData(item)">Delete</button>
         </td>
       </tr>
     </tbody>
-  </table> -->
-
-
-  <ul>
-    <li class="text" *ngFor="let item of usersData">
-      {{item.name}}
-    </li>
-  </ul>
-
+  </table>
 
   <!-- loader start -->
-  <!-- <ng-container *ngIf="showLoader">
+  <ng-container *ngIf="showLoader">
     <div class="d-flex align-items-center justify-content-center mt-5">
       <div class="loader"></div>
     </div>
   </ng-container> -->
   <!-- loader end -->
-<!-- </div> -->
+ </div>
 
 <div id="snackbar" class="btn-success"></div>
 
