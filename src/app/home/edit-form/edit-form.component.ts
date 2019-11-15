@@ -18,20 +18,20 @@ export class EditFormComponent implements OnInit {
   }
 
   ngOnInit() { 
-console.log('my log', this.cancelForm );
-
-
+    console.log('my log', this.userEditData);
     this.userEditForm = this.formBuilder.group({
-      employee_name: ['', Validators.required],
-      employee_salary: ['', Validators.required],
-      employee_age: ['', Validators.required],
-      id: ['']
+      name: ['', Validators.required],
+      score: ['', Validators.required],
+      date: ['', Validators.required],
+      weight: [''],
+      $key: ['']
     });
-    if (this.userEditData && this.userEditData.id) {
-      this.userEditForm.get('employee_name').setValue(this.userEditData.employee_name ? this.userEditData.employee_name : '');
-      this.userEditForm.get('employee_salary').setValue(this.userEditData.employee_salary ? this.userEditData.employee_salary : '');
-      this.userEditForm.get('employee_age').setValue(this.userEditData.employee_age ? this.userEditData.employee_age : '');
-      this.userEditForm.get('id').setValue(this.userEditData.id ? this.userEditData.id : '');
+    if (this.userEditData && this.userEditData.$key) {
+      this.userEditForm.get('name').setValue(this.userEditData.name ? this.userEditData.name : '');
+      this.userEditForm.get('score').setValue(this.userEditData.score ? this.userEditData.score : '');
+      this.userEditForm.get('date').setValue(this.userEditData.date ? this.userEditData.date : '');
+      this.userEditForm.get('weight').setValue(this.userEditData.weight ? this.userEditData.weight : '');
+      this.userEditForm.get('$key').setValue(this.userEditData.$key ? this.userEditData.$key : '');
     }
   }
 
@@ -42,15 +42,7 @@ console.log('my log', this.cancelForm );
 
   // update user
   updateUser(updateData) {
-    const dataFormat = {
-      'name': updateData.employee_name,
-      'salary': updateData.employee_salary,
-      'age': updateData.employee_age,
-      'id': updateData.id
-    }    
-    this.homeService.updateUserData(dataFormat).subscribe(r => {
-      console.log('bvhmvjhvj,hvbk,h', r);
-      this.cancelForm.emit(true);
-    })
+    this.homeService.updateUserData(updateData);
+    this.cancelForm.emit(true);
   }
 }

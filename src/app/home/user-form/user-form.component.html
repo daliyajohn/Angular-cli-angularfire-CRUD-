@@ -1,14 +1,12 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
-  <p class="font-weight-bold">Add user</p>
+  <p class="font-weight-bold">Add Employee Details</p>
   <div class="form-group">
     <label for="name">Name</label>
-    <!-- <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name"> -->
     <select class="custom-select" id="name" formControlName="name">
       <option selected>Choose...</option>
       <ng-container *ngFor="let employee of employeeName" >
         <option>{{employee.name}}</option>
       </ng-container>
-
     </select>
   </div>
 

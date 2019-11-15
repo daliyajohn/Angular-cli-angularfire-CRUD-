@@ -36,14 +36,17 @@ export class UserListComponent implements OnInit {
       this.employeeList = [];
       item.forEach(element => {
         this.empData = element.payload.toJSON();
-        // this.empData["$key"] = element.key;
+        this.empData["$key"] = element.key;
         this.employeeList.push(this.empData);
       });
     });
   }
 
   editUserData(UserId) {
+
+    
     this.userDetails = UserId;
+    console.log('user id',this.userDetails );
     this.editUser = true;
   }
 
