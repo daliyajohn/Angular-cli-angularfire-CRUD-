@@ -1,7 +1,14 @@
-
+.form-group {
+    select {
+        background: #e8dede14;
+        color: white;
+        font-size: 14px;
+        width: 260px;
+    }
+}
 .table-container {
     overflow-y: auto;
-    height: 743px;
+    height: 1138px;
     table {
         color: white;
         background: #ffffff26;

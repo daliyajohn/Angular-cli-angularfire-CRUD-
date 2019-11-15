@@ -1,6 +1,14 @@
 
 <h2 class="my-4">FAYA FAT 2 FIT 2.0</h2>
-<div class="table-container">
+  <div class="form-group text-right">
+    <select class="custom-select" id="name">
+      <option selected>Filter by name</option>
+      <ng-container *ngFor="let employee of employeeName" >
+        <option>{{employee.name}}</option>
+      </ng-container>
+    </select>
+  </div>
+  <div class="table-container">
   <table class="table">
     <thead>
       <tr>
@@ -31,9 +39,9 @@
     <div class="d-flex align-items-center justify-content-center mt-5">
       <div class="loader"></div>
     </div>
-  </ng-container> -->
+  </ng-container> 
   <!-- loader end -->
- </div>
+  </div>
 
 <div id="snackbar" class="btn-success"></div>
 

@@ -18,6 +18,7 @@ export class UserListComponent implements OnInit {
 
   employeeList = [];
   empData:any;
+  employeeName: any = [];
 
   constructor( private router: Router, private homeService: HomeService) {
      this.listUserData();
@@ -26,6 +27,26 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.showLoader = true;
     this.homeService.getUsersData();
+    // employee name
+    this.employeeName = [
+      {'name': 'Anand'},
+      {'name': 'Daliya'},
+      {'name': 'Deepu'},
+      {'name': 'Erild'},
+      {'name': 'Jaseena'},
+      {'name': 'Nithin'},
+      {'name': 'Thaha'},
+      {'name': 'Vishnu'},
+      {'name': 'Adarsh'},
+      {'name': 'Lavanya'},
+      {'name': 'Sumil'},
+      {'name': 'Rahul'},
+      {'name': 'Arun'},
+      {'name': 'Kala'},
+      {'name': 'Midhun'},
+      {'name': 'Samreen'},
+      {'name': 'Nithya'}
+    ]
   }
 
   // user data list

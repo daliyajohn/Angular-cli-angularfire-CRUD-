@@ -47,19 +47,15 @@ export class UserFormComponent implements OnInit {
         {'name': 'Samreen'},
         {'name': 'Nithya'}
     ]
-    console.log('emp name', this.employeeName);
   }
 
   // submit data
   onSubmit(userData) {
     this.submitted = true;
-    if (this.userForm.valid) {
-
-      console.log('add data', userData);
-    
+    if (this.userForm.valid) {    
       this.homeService.createUser(userData);
       this.cancelForm.emit(false);
-      }
+    }
   }
 
   onReset() {
