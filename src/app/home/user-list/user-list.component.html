@@ -2,20 +2,20 @@
 <h2 class="my-4">FAYA FAT 2 FIT 2.0</h2>
   <div class="form-group text-right">
     <select class="custom-select" id="name" (change)="filterValue($event)">
-      <option selected value="">Search by name</option>
+      <option selected value="">Search </option>
       <ng-container *ngFor="let employee of employeeName" >
         <option>{{employee.name}}</option>
       </ng-container>
     </select>
   </div>
   <div class="table-container">
-  <table class="table" id="userTable">
+  <table class="table supTable" id="userTable">
     <thead>
       <tr>
         <th scope="col"></th>
-        <th scope="col">Name</th>
+        <th scope="col" >Name</th>
         <th scope="col">Date</th>
-        <th scope="col">Score</th>
+        <th scope="col" (click)="sortUserData('supTable', 0)">Score</th>
         <th scope="col">Weight</th>
         <th scope="col">Action</th>
       </tr>
@@ -55,8 +55,6 @@
           </button>
         </div>
         <div class="modal-body">
-          <!-- <app-edit-form [userEditData]="userDetails" (cancelForm)="closeModal($event)"></app-edit-form>
-           -->
            <app-user-form [userEditData]="userDetails" (cancelForm)="closeModal($event)"></app-user-form>
         </div>
       </div>

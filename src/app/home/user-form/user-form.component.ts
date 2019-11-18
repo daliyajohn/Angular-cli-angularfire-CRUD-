@@ -65,7 +65,7 @@ export class UserFormComponent implements OnInit {
   // submit data
   onSubmit(userData) {
     this.submitted = true;
-    if (this.userForm.valid) {    
+    if (this.userForm.valid && !userData.$key) {    
       this.homeService.createUser(userData);
       this.cancelForm.emit(false);
     }  
