@@ -14,39 +14,52 @@ export class UserFormComponent implements OnInit {
   userForm: FormGroup;
   submitted = false;
   employeeName: any = [];
-  
+
+  titleForm = "Add";
+  buttonForm = "Add";
+
   @Output() cancelForm: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private formBuilder: FormBuilder, private homeService: HomeService) { 
   }
 
   ngOnInit() { 
+    this.employeeName = [
+      {'name': 'Anand'},
+      {'name': 'Daliya'},
+      {'name': 'Deepu'},
+      {'name': 'Erild'},
+      {'name': 'Jaseena'},
+      {'name': 'Nithin'},
+      {'name': 'Thaha'},
+      {'name': 'Vishnu'},
+      {'name': 'Adarsh'},
+      {'name': 'Lavanya'},
+      {'name': 'Sumil'},
+      {'name': 'Rahul'},
+      {'name': 'Arun'},
+      {'name': 'Kala'},
+      {'name': 'Midhun'},
+      {'name': 'Samreen'},
+      {'name': 'Nithya'}
+    ]
     this.userForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      score: ['', Validators.required],
-      date: ['', Validators.required],
-      weight: ['']
+      name: [''],
+      score: [''],
+      date: [''],
+      weight: [''],
+      $key: ['']
     });
 
-    this.employeeName = [
-        {'name': 'Anand'},
-        {'name': 'Daliya'},
-        {'name': 'Deepu'},
-        {'name': 'Erild'},
-        {'name': 'Jaseena'},
-        {'name': 'Nithin'},
-        {'name': 'Thaha'},
-        {'name': 'Vishnu'},
-        {'name': 'Adarsh'},
-        {'name': 'Lavanya'},
-        {'name': 'Sumil'},
-        {'name': 'Rahul'},
-        {'name': 'Arun'},
-        {'name': 'Kala'},
-        {'name': 'Midhun'},
-        {'name': 'Samreen'},
-        {'name': 'Nithya'}
-    ]
+    if (this.userEditData && this.userEditData.$key) {
+      this.titleForm = "Edit";
+      this.buttonForm = "Update";
+      this.userForm.get('name').setValue(this.userEditData.name ? this.userEditData.name : '');
+      this.userForm.get('score').setValue(this.userEditData.score ? this.userEditData.score : '');
+      this.userForm.get('date').setValue(this.userEditData.date ? this.userEditData.date : '');
+      this.userForm.get('weight').setValue(this.userEditData.weight ? this.userEditData.weight : '');
+      this.userForm.get('$key').setValue(this.userEditData.$key ? this.userEditData.$key : '');
+    }
   }
 
   // submit data
@@ -55,9 +68,13 @@ export class UserFormComponent implements OnInit {
     if (this.userForm.valid) {    
       this.homeService.createUser(userData);
       this.cancelForm.emit(false);
+    }  
+    if (this.userEditData && this.userEditData.$key) {
+        this.homeService.updateUserData(userData);
+        this.cancelForm.emit(false);
     }
-  }
-
+  } 
+  
   onReset() {
     this.submitted = false;
     this.userForm.reset();

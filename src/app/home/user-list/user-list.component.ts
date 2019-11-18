@@ -72,8 +72,8 @@ export class UserListComponent implements OnInit {
   }
 
   closeModal() {
-    document.querySelector('.modal-backdrop').classList.toggle('show');
-    document.querySelector('.modal-backdrop').classList.toggle('d-none');
+    // document.querySelector('.modal-backdrop').classList.toggle('show');
+    // document.querySelector('.modal-backdrop').classList.toggle('d-none');
     this.editUser = false;
   }
 }
