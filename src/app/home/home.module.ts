@@ -7,10 +7,9 @@ import { HomeComponent } from './home.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { HomeService } from './service/home.service';
-import { EditFormComponent } from './edit-form/edit-form.component';
 
 @NgModule({
-  declarations: [HomeComponent, UserListComponent, UserFormComponent, EditFormComponent],
+  declarations: [HomeComponent, UserListComponent, UserFormComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
