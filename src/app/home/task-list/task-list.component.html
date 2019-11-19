@@ -1,1 +1,85 @@
-<p>task-list works!</p>
+<div class="d-flex align-items-center">
+    <h2 class="my-3">Task list</h2> <button class="btn btn-primary ml-4" type="button"  id="close-popup"  data-toggle="modal" data-target="#taskModal" (click)="showPopup()">Add Task</button>
+</div>
+
+<div class="row task-container mb-4">
+  <ng-container  *ngFor="let task of taskList">
+    <div class="col-sm-3 mb-3">
+      <div class="card ">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <p class="mb-0 date-style">{{task.date}}</p> 
+          <p class="mb-0" id="close-popup"  data-toggle="modal" data-target="#taskModal" (click)="editTaskDetails(task)">Edit</p>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{task?.task1}}</p>
+          <p class="card-text">{{task?.task2}}</p>
+          <p class="card-text">{{task?.task3}}</p>
+          <p class="card-text">{{task?.task4}}</p>
+          <p class="card-text">{{task?.task5}}</p>
+          <p class="card-text">{{task?.task6}}</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+
+<!-- Add task form start -->
+<div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true" *ngIf="showPop">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="font-weight-bold mb-0">{{titleForm}} Task Details</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit(taskForm.value)" class="d-flex justify-content-between">
+            <div class="form-group w-100">
+              <label for="date">Date</label>
+              <input type="date" class="form-control" id="date" formControlName="date" placeholder="Date">
+            </div>
+        
+            <div class="form-group">
+              <label for="task1">Task 1</label>
+              <input type="text" class="form-control" id="task1" formControlName="task1" placeholder="Task name">
+            </div>
+          
+            <div class="form-group">
+              <label for="task2">Task 2</label>
+              <input type="text" class="form-control" id="task2" formControlName="task2" placeholder="Task name">
+            </div>
+
+            <div class="form-group">
+              <label for="task3">Task 3</label>
+              <input type="text" class="form-control" id="task3" formControlName="task3" placeholder="Task name">
+            </div>
+
+            <div class="form-group">
+              <label for="task4">Task 4</label>
+              <input type="text" class="form-control" id="task4" formControlName="task4" placeholder="Task name">
+            </div>
+
+            <div class="form-group">
+              <label for="task5">Task 5</label>
+              <input type="text" class="form-control" id="task5" formControlName="task5" placeholder="Task name">
+            </div>
+
+            <div class="form-group">
+              <label for="task6">Task 6</label>
+              <input type="text" class="form-control" id="task6" formControlName="task6" placeholder="Task name">
+            </div>
+            
+            <div class="text-right w-100">
+              <button type="submit" class="btn btn-primary float-right" >{{buttonForm}}</button>
+              <button class="btn btn-secondary float-right mr-2" type="reset" (click)="onReset()" data-dismiss="modal">Cancel</button>
+            </div>
+            
+          </form>
+            
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add task form end -->
