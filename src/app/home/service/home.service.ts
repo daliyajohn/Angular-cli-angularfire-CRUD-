@@ -10,6 +10,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 export class HomeService {
   constructor(private http: HttpClient, private db: AngularFireDatabase) { }
   employeeList: AngularFireList<any>;
+  taskList: AngularFireList<any>;
 
   // get user details
   getUsersData() {
@@ -36,5 +37,39 @@ export class HomeService {
       weight: updateData.weight,
       date: updateData.date
     });
+  }
+
+  // get task details
+  getTaskData() {
+    this.taskList = this.db.list('/tasklist');
+    return this.taskList;
+  }
+
+  // create task
+  createTask(user) {    
+    this.taskList.push({
+      date: user.date,
+      task1: user.task1,
+      task2: user.task2,
+      task3: user.task3,
+      task4: user.task4,
+      task5: user.task6,
+      task6: user.task6
+    });
+  }
+
+  // update task
+  updateTaskData(updateTaskData) {
+    this.taskList.update(updateTaskData.$key,
+      {
+        date: updateTaskData.date,
+        task1: updateTaskData.task1,
+        task2: updateTaskData.task2,
+        task3: updateTaskData.task3,
+        task4: updateTaskData.task4,
+        task5: updateTaskData.task6,
+        task6: updateTaskData.task6
+      }
+    );
   }
 }
