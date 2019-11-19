@@ -14,10 +14,8 @@ export class UserFormComponent implements OnInit {
   userForm: FormGroup;
   submitted = false;
   employeeName: any = [];
-
   titleForm = "Add";
   buttonForm = "Add";
-
   @Output() cancelForm: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private formBuilder: FormBuilder, private homeService: HomeService) { 

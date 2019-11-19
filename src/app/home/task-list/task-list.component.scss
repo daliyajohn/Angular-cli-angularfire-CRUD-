@@ -1,33 +1,35 @@
-h2 {
-    color: floralwhite;
+button {
+	background: #ffc10740;
+	border: 2px solid #FFC107;
+	text-transform: uppercase;
 }
 .task-container {
-    .card {
-        background-color: #ffffff26!important;
-        color: white;
-        border: 1px solid #ffffff45;
-        height: 100%;
-    }
-    .card-header {
-        border-bottom: 1px solid #ffffff45;
-        .date-style {
-					color: #FFC107;
-					font-weight: bold;
-        }
-    }
+	.card {
+		background-color: #ffffff26!important;
+		color: white;
+		border: 1px solid #ffffff45;
+		height: 100%;
+	}
+	.card-header {
+		border-bottom: 1px solid #ffffff45;
+		.date-style {
+			color: #FFC107;
+			font-weight: bold;
+		}
+	}
 }
 form {
-    flex-wrap: wrap;
-    p {
-        font-size: 18px;
-    }
-    label, input , select {
-        font-size: 12px;
-    }
-    ::placeholder {
-        font-size: 12px;
-    }
-    .form-group {
-        width: 49%;
-    }
+	flex-wrap: wrap;
+	p {
+			font-size: 18px;
+	}
+	label, input , select {
+			font-size: 12px;
+	}
+	::placeholder {
+			font-size: 12px;
+	}
+	.form-group {
+			width: 49%;
+	}
 }

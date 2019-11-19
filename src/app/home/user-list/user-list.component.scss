@@ -3,7 +3,7 @@
         background: #e8dede14;
         color: white;
         font-size: 14px;
-        width: 260px;
+        width: 300px;
     }
 }
 .table-container {
@@ -14,6 +14,10 @@
         color: white;
         background: #ffffff26;
         margin-bottom: 0;
+        th {
+            color: #FFC107;
+            font-size: 18px;
+        }
     }
 }
 .modal-header {
@@ -23,4 +27,13 @@
 h2 {
     color: floralwhite;
     text-align: center;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #FFC107;
+    background-color: #b0c1b442;
+}
+.nav-item {
+    a {
+        color: white;
+    }
 }
