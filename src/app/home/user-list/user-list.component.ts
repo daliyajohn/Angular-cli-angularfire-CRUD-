@@ -64,8 +64,6 @@ export class UserListComponent implements OnInit {
   }
 
   editUserData(UserId) {
-
-    
     this.userDetails = UserId;
     console.log('user id',this.userDetails );
     this.editUser = true;
@@ -139,11 +137,6 @@ export class UserListComponent implements OnInit {
       }
     }  
   }
-
-
-
-
-
 }
 
 

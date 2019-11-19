@@ -61,8 +61,8 @@ export class TaskListComponent implements OnInit {
       this.showPop = false;
     }  
     if (this.taskDetails && this.taskDetails.$key) {
-        this.homeService.updateTaskData(taskData);
-        this.showPop = false;
+      this.homeService.updateTaskData(taskData);
+      this.showPop = false;
     }
   } 
 
