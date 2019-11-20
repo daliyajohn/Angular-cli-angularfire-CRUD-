@@ -71,10 +71,6 @@ export class UserListComponent implements OnInit {
 
   closeModal() {
     document.querySelector('.modal-backdrop').remove();
-    // document.querySelector('.modal-backdrop').classList.add('d-none');
-    
-    // $('#userModal').modal('hide');
-
     this.editUser = false;
   }
 

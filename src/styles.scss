@@ -71,7 +71,10 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-
+.modal-open {
+  padding-right: 0!important;
+  overflow: auto;
+}
 @media (min-width: 1200px) {
   .container {
     max-width: 80%;
