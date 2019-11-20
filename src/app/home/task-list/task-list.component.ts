@@ -54,11 +54,13 @@ export class TaskListComponent implements OnInit {
     this.submitted = true;
     if (this.taskForm.valid && !taskData.$key) {    
       this.homeService.createTask(taskData);
+      document.querySelector('.modal-backdrop').remove();
       this.showPop = false;
     }  
     if (this.taskDetails && this.taskDetails.$key) {
       this.homeService.updateTaskData(taskData);
       this.showPop = false;
+      document.querySelector('.modal-backdrop').remove();
     }
   } 
 
