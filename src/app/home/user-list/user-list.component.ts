@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform, Pipe } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { HomeService } from '../service/home.service';
-import { $ } from 'protractor';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
+
+
+
+
 export class UserListComponent implements OnInit {
   userDetails: any;
   editUser: boolean;
@@ -58,6 +58,7 @@ export class UserListComponent implements OnInit {
       item.forEach(element => {
         this.empData = element.payload.toJSON();
         this.empData["$key"] = element.key;
+        this.empData['score'] = parseInt(this.empData.score);
         this.employeeList.push(this.empData);
       });
     });
@@ -65,7 +66,6 @@ export class UserListComponent implements OnInit {
 
   editUserData(UserId) {
     this.userDetails = UserId;
-    console.log('user id',this.userDetails );
     this.editUser = true;
   }
 
@@ -94,47 +94,17 @@ export class UserListComponent implements OnInit {
     }
   }
 
-
   // sortdata
-  sortUserData(tableClass, n) {
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    table = document.getElementsByClassName(tableClass)[0];
-    switching = true;
-    dir = "asc";
-    while (switching) {
-      switching = false;
-      rows = table.getElementsByTagName("TR");
-      for (i = 1; i < (rows.length - 1); i++) {
-          shouldSwitch = false;
-          x = rows[i].getElementsByTagName("TD")[n];
-          y = rows[i + 1].getElementsByTagName("TD")[n];
-                  var cmpX=isNaN(parseInt(x.innerHTML))?x.innerHTML.toLowerCase():parseInt(x.innerHTML);
-                  var cmpY=isNaN(parseInt(y.innerHTML))?y.innerHTML.toLowerCase():parseInt(y.innerHTML);
-                  cmpX=(cmpX=='-')?0:cmpX;
-                  cmpY=(cmpY=='-')?0:cmpY;
-          if (dir == "asc") {
-              if (cmpX > cmpY) {
-                  shouldSwitch= true;
-                  break;
-              }
-          } else if (dir == "desc") {
-              if (cmpX < cmpY) {
-                  shouldSwitch= true;
-                  break;
-              }
-          }
-      }
-      if (shouldSwitch) {
-          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-          switching = true;
-          switchcount ++;      
+  sortUserData() {
+    this.employeeList.sort((a: any, b: any) => {
+      if (a['score'] < b['score']) {
+        return -1;
+      } else if (a['score'] > b['score']) {
+        return 1;
       } else {
-          if (switchcount == 0 && dir == "asc") {
-              dir = "desc";
-              switching = true;
-          }
+        return 0;
       }
-    }  
+    });
   }
 }
 
