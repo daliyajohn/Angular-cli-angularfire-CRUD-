@@ -90,7 +90,6 @@ export class UserListComponent implements OnInit {
       }       
     }
   }
-
   // sortdata
   sortUserData() {
     this.employeeList.sort((a: any, b: any) => {
