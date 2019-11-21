@@ -8,9 +8,6 @@ import { HomeService } from '../service/home.service';
   styleUrls: ['./user-list.component.scss']
 })
 
-
-
-
 export class UserListComponent implements OnInit {
   userDetails: any;
   editUser: boolean;
@@ -97,9 +94,9 @@ export class UserListComponent implements OnInit {
   // sortdata
   sortUserData() {
     this.employeeList.sort((a: any, b: any) => {
-      if (a['score'] < b['score']) {
+      if (a['score'] > b['score']) {
         return -1;
-      } else if (a['score'] > b['score']) {
+      } else if (a['score'] < b['score']) {
         return 1;
       } else {
         return 0;
