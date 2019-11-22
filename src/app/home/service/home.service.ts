@@ -53,7 +53,7 @@ export class HomeService {
       task2: user.task2,
       task3: user.task3,
       task4: user.task4,
-      task5: user.task6,
+      task5: user.task5,
       task6: user.task6
     });
   }
@@ -67,7 +67,7 @@ export class HomeService {
         task2: updateTaskData.task2,
         task3: updateTaskData.task3,
         task4: updateTaskData.task4,
-        task5: updateTaskData.task6,
+        task5: updateTaskData.task5,
         task6: updateTaskData.task6
       }
     );
