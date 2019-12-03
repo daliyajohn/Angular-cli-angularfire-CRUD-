@@ -42,7 +42,7 @@ export class UserFormComponent implements OnInit {
       {'name': 'Nithya'}
     ]
     this.userForm = this.formBuilder.group({
-      name: [''],
+      name: ['',Validators.required],
       score: [''],
       date: [''],
       weight: [''],
@@ -59,6 +59,8 @@ export class UserFormComponent implements OnInit {
       this.userForm.get('$key').setValue(this.userEditData.$key ? this.userEditData.$key : '');
     }
   }
+
+  get f() { return this.userForm.controls; }
 
   // submit data
   onSubmit(userData) {

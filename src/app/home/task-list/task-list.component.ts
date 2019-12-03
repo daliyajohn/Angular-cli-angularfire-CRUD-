@@ -10,9 +10,8 @@ import { HomeService } from '../service/home.service';
 export class TaskListComponent implements OnInit {
   taskForm: FormGroup;
   submitted = false;
-  titleForm = "Add";
-  buttonForm = "Add";
-
+  titleForm = "";
+  buttonForm = "";
   showLoader: boolean;
   taskList = [];
   taskData:any;
@@ -23,16 +22,6 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit() {
     this.listTaskData();
-    this.taskForm = this.formBuilder.group({
-      date: [''],
-      task1: [''],
-      task2: [''],
-      task3: [''],
-      task4: [''],
-      task5: [''],
-      task6: [''],
-      $key: ['']
-    });
   }
 
   // user data list
@@ -86,7 +75,19 @@ export class TaskListComponent implements OnInit {
     this.showPop = true;
   }
 
-  showPopup() {
+  addUserTask() {
     this.showPop = true;
+    this.titleForm = "Add";
+      this.buttonForm = "Add";
+    this.taskForm = this.formBuilder.group({
+      date: [''],
+      task1: ['', Validators.required],
+      task2: [''],
+      task3: [''],
+      task4: [''],
+      task5: [''],
+      task6: [''],
+      $key: ['']
+    });
   }
 }
