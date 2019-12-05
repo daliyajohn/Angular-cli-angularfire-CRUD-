@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HomeService } from '../service/home.service';
-import { first } from 'rxjs/operators';
-
 
 @Component({
   selector: 'app-user-form',
@@ -70,8 +68,8 @@ export class UserFormComponent implements OnInit {
       this.cancelForm.emit(false);
     }  
     if (this.userEditData && this.userEditData.$key) {
-        this.homeService.updateUserData(userData);
-        this.cancelForm.emit(false);
+      this.homeService.updateUserData(userData);
+      this.cancelForm.emit(false);
     }
   } 
   

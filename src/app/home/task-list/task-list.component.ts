@@ -10,8 +10,8 @@ import { HomeService } from '../service/home.service';
 export class TaskListComponent implements OnInit {
   taskForm: FormGroup;
   submitted = false;
-  titleForm = "";
-  buttonForm = "";
+  titleForm : any;
+  buttonForm : any;
   showLoader: boolean;
   taskList = [];
   taskData:any;
@@ -78,7 +78,7 @@ export class TaskListComponent implements OnInit {
   addUserTask() {
     this.showPop = true;
     this.titleForm = "Add";
-      this.buttonForm = "Add";
+    this.buttonForm = "Add";
     this.taskForm = this.formBuilder.group({
       date: [''],
       task1: ['', Validators.required],
