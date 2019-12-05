@@ -9,6 +9,9 @@ body {
     height: 100%;
     padding-right: 0!important;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
 // toaster
 #snackbar {
     visibility: hidden;
