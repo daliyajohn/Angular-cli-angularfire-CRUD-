@@ -1,0 +1,36 @@
+main {
+	background: url('/assets/images/home-bg.jpeg') no-repeat center center / cover;
+	min-height: 100%;
+	width: 100%;
+	button {
+		font-size: 14px;
+        background: #036ff4;
+        color: white;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+    label, h3 {
+        color: white;
+    }
+    .login-wrap-container {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        .login-wrap {
+            width: 40%;
+            padding: 3em;
+            background: #0000006e;
+        }
+        .form-control {
+            line-height: 1.8;
+            color: white;
+            background-color: #fbfbfb14;
+            &:focus {
+                color: white;
+                background-color: #fbfbfb14;
+            }
+        }
+    }
+    
+}
