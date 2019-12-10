@@ -83,3 +83,19 @@ body {
     max-width: 80%;
   }
 }
+.error-messages , .sucess-messages {
+  position: absolute;
+  bottom: 6px;
+  background: red;
+  color: white;
+  padding: 8px 23px 8px 23px;
+  border-radius: 3px;
+  left: 40%;
+  display: block!important;
+}
+.sucess-messages {
+  background: green;;
+}
+.error-cus {
+  display: none;
+}

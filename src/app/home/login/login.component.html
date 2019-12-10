@@ -15,8 +15,8 @@
 						<input type="password" class="form-control" id="pwd" autocomplete="off" formControlName="password">
 					</div>
 					<div class="mt-4">
-						<button (click)="signIn()" class="btn btn-default" style="margin-left:5px;">Login</button>
-						<button (click)="signUp()" class="btn btn-default ml-3">Sign Up</button>
+						<button (click)="signIn(loginForm.value)" class="btn btn-default" style="margin-left:5px;">Login</button>
+						<button (click)="signUp(loginForm.value)" class="btn btn-default ml-3">Sign Up</button>
 					</div>
 				</form>
 			</div>

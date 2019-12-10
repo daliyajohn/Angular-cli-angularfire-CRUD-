@@ -3,12 +3,17 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
-  constructor(private http: HttpClient, private db: AngularFireDatabase) { }
+  userData: Observable<firebase.User>;
+
+  constructor(private http: HttpClient, private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) {
+    this.userData = angularFireAuth.authState;
+  }
   employeeList: AngularFireList<any>;
   taskList: AngularFireList<any>;
 
@@ -71,5 +76,59 @@ export class HomeService {
         task6: updateTaskData.task6
       }
     );
+  }
+
+  // Sign up 
+  SignUp(data) {
+    this.angularFireAuth
+    .auth
+    .createUserWithEmailAndPassword(data.email, data.password)
+    .then(res => {
+      var div = document.createElement("div");
+      div.innerHTML = 'You are Successfully Signed Up!';
+      div.classList.add("sucess-messages");
+      div.classList.add("error-cus");
+      document.body.appendChild(div);
+      setTimeout(function () {
+        document.querySelector('.sucess-messages').classList.remove('sucess-messages')
+      }, 3000);
+    })
+    .catch(error => {
+      var div = document.createElement("div");
+      div.innerHTML = error.message;
+      div.classList.add("error-messages");
+      div.classList.add("error-cus");
+      document.body.appendChild(div);
+      setTimeout(function () {
+        document.querySelector('.error-messages').classList.remove('error-messages')
+      }, 3000);
+    });
+  }
+    
+  // Sign in 
+  SignIn(data) {
+    this.angularFireAuth
+    .auth
+    .signInWithEmailAndPassword(data.email, data.password)
+    .then(res => {
+      var div = document.createElement("div");
+      div.innerHTML = 'You are Successfully Signed In!';
+      div.classList.add("error-cus");
+      div.classList.add("sucess-messages");
+      document.body.appendChild(div);
+      setTimeout(function () {
+        document.querySelector('.sucess-messages').classList.remove('sucess-messages')
+      }, 3000);
+    })
+    .catch(err => {
+      var div = document.createElement("div");
+      div.innerHTML = err.message;
+      div.classList.add("error-messages");
+      div.classList.add("error-cus");
+      document.body.appendChild(div);
+      setTimeout(function () {
+        document.querySelector('.error-messages').classList.remove('error-messages')
+      }, 3000);
+    });
   }
 }

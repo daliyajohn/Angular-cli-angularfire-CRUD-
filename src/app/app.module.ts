@@ -11,6 +11,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { LoginComponent } from './home/login/login.component';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { LoginComponent } from './home/login/login.component';
     AngularFireDatabaseModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
