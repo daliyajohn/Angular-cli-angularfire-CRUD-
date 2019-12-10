@@ -21,6 +21,10 @@ main {
             width: 40%;
             padding: 3em;
             background: #0000006e;
+            @media (max-width: 991px) { 
+                width: 80%;
+                padding: 2em;
+            }
         }
         .form-control {
             line-height: 1.8;
