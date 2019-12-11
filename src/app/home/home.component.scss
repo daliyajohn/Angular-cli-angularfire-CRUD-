@@ -1,35 +1,40 @@
+button {
+	float: right;
+    margin: 16px 14px 10px 0px;
+}
 main {
 	background: url('/assets/images/home-bg.jpeg') no-repeat center center / cover;
 	min-height: 100%;
 	width: 100%;
 	
-	button {
-		height: 55px;
-		width: 55px;
-		border-radius: 50%;
-		font-size: 32px;
-		background: #ffffff1f;
-		color: white;
-		border: 2px solid white;
-		position: fixed;
-		bottom: 30px;
-		right: 30px;
-		cursor: pointer;
-		span {
-			margin-top: -6px;
-			display: block;
-			color: #FFC107;
-		}
-		&:focus {
-			outline: none;
-		}
-	}
 	.list-container {
 		display: flex;
 		justify-content: center;
+		button {
+			height: 55px;
+			width: 55px;
+			border-radius: 50%;
+			font-size: 32px;
+			background: #ffffff1f;
+			color: white;
+			border: 2px solid white;
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+			cursor: pointer;
+			span {
+				margin-top: -6px;
+				display: block;
+				color: #FFC107;
+			}
+			&:focus {
+				outline: none;
+			}
+		}
 	}
 } 
 .modal-header {
 	border-bottom: transparent;
 	padding: 12px 15px 0px 0px;
 }
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from './service/home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   addUser: boolean;
-  constructor() { }
+  constructor( public homeService: HomeService) { }
 
   ngOnInit() {
   }
@@ -18,6 +19,10 @@ export class HomeComponent implements OnInit {
   closeModal(){
     document.querySelector('.modal-backdrop').remove();
     this.addUser = false;
+  }
+
+  signOut() {
+    this.homeService.SignOut();
   }
 
 }

@@ -134,4 +134,10 @@ export class HomeService {
       }, 3000);
     });
   }
+
+  // sign out
+  SignOut() {
+    this.angularFireAuth.auth.signOut();
+    this.router.navigateByUrl('/login');
+  }
 }
