@@ -17,7 +17,7 @@ export class UserListComponent implements OnInit {
   empData:any;
   employeeName: any = [];
 
-  constructor( private router: Router, private homeService: HomeService) {
+  constructor( private router: Router, public homeService: HomeService) {
      this.listUserData();
    }
 

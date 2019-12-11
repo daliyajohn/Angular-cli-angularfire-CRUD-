@@ -18,7 +18,7 @@ export class TaskListComponent implements OnInit {
   showPop: boolean;
   taskDetails: any;
 
-  constructor(private formBuilder: FormBuilder, private homeService: HomeService) { }
+  constructor(private formBuilder: FormBuilder, public homeService: HomeService) { }
 
   ngOnInit() {
     this.listTaskData();

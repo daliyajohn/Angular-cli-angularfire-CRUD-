@@ -27,7 +27,7 @@
             <th scope="col">Date</th>
             <th scope="col" (click)="sortUserData()" class="cursor-pointer">Score</th>
             <th scope="col">Weight</th>
-            <th scope="col">Action</th>
+            <th scope="col"  *ngIf="homeService.userData | async">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -37,7 +37,7 @@
             <td>{{item.date}}</td>
             <td>{{item.score}}</td>
             <td>{{item.weight}}</td>
-            <td>
+            <td  *ngIf="homeService.userData | async">
               <button  type="button" class="btn btn-success mr-2" id="close-popup"  data-toggle="modal" data-target="#userModal" (click)="editUserData(item)">Edit</button>
             </td>
           </tr>

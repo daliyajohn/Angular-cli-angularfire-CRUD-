@@ -1,10 +1,12 @@
-<button (click)="signOut()" class="btn btn-primary" >Logout</button>
+<button (click)="signOut()" class="btn btn-primary" *ngIf="homeService.userData | async" >Logout</button>
 <main>
 	<section class="list-container">
 		<div class="container">
 				<app-user-list></app-user-list>
 		</div>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal" (click)="addUserData()"><span>+</span></button>
+		<ng-container  *ngIf="homeService.userData | async">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userModal" (click)="addUserData()"><span>+</span></button>
+		</ng-container>
 	</section>
 </main>
 
@@ -24,4 +26,3 @@
 	</div>
 </div>
 <!-- user add form modal end -->
-<!-- *ngIf="homeService.userData | async" -->
