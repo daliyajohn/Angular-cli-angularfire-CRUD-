@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFireAuth } from "@angular/fire/auth";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 export class HomeService {
   userData: Observable<firebase.User>;
 
-  constructor(private http: HttpClient, private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth) {
+  constructor(private http: HttpClient, private db: AngularFireDatabase, private angularFireAuth: AngularFireAuth, private router: Router) {
     this.userData = angularFireAuth.authState;
   }
   employeeList: AngularFireList<any>;
@@ -84,6 +85,7 @@ export class HomeService {
     .auth
     .createUserWithEmailAndPassword(data.email, data.password)
     .then(res => {
+      this.router.navigateByUrl('/home');
       var div = document.createElement("div");
       div.innerHTML = 'You are Successfully Signed Up!';
       div.classList.add("sucess-messages");
@@ -111,6 +113,7 @@ export class HomeService {
     .auth
     .signInWithEmailAndPassword(data.email, data.password)
     .then(res => {
+      this.router.navigateByUrl('/home');
       var div = document.createElement("div");
       div.innerHTML = 'You are Successfully Signed In!';
       div.classList.add("error-cus");
